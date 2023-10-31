@@ -1,43 +1,28 @@
-import os
-import fitz
-
-
-
 print("In app file")
+
+import os
+from helper import read_PDF_to_image
+
+
 
 
 class PDF:
 
     def __init__(self) -> None:
-        self.data_dir = r"App\Data"
-        self.output_dir = r"App\Output"
-
-    def read_PDF_to_image(self, pdf_file):
-        data_dir = self.data_dir
-        output_folder = self.output_dir
-
-        pdf_path = data_dir + '\\' + pdf_file
-        print(pdf_path)
+        pass
         
-
-        doc = fitz.open(pdf_path)
-        zoom = 4
-        mat = fitz.Matrix(zoom, zoom)
-        
-        for i in range(doc.page_count):
-            image_path = f"{output_folder}/image_{i+1}.jpg"
-            page = doc.load_page(i)
-            pix = page.get_pixmap(matrix=mat, dpi=300)
-            pix.save(image_path)
-            print(f"Saved Page at {image_path}")
-        doc.close()
-        
-    def load_pdf_file(self):
+    def load_pdf_file(self, data_dir,output_dir,  file_name):
         print("In load_pdf_file")
-        data_dir = self.data_dir
+        data_dir = data_dir
         files = os.listdir(data_dir)
-        pdf_file = files[0]
-        return pdf_file
+        # print(files)
+        # print(file_name)
+
+        pdf_file = [i for i in files if file_name in i][0]
+
+        read_PDF_to_image(data_dir, output_dir,  pdf_file )
+        
+        # read_PDF_to_image(pdf_file)
 
 
 

@@ -2,8 +2,11 @@ print("App running......")
 
 
 from app import PDF
+from app_req import data_dir, output_dir
 
 obj = PDF()
-pdf_file = obj.load_pdf_file()
 
-obj.read_PDF_to_image(pdf_file)
+file_name = "HealthReport_2022_06_20_4_15_21_199"
+obj.load_pdf_file(data_dir,output_dir,  file_name)
+
+
