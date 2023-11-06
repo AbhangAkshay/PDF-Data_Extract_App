@@ -9,7 +9,7 @@ from PIL import Image
 # from app_req import data_dir
 
 image_path = r"App\Output\image_1.jpg"
-output_folder = r"App\Output"
+output_folder = r"App"
 
 reader = easyocr.Reader(['en'])
 
